@@ -36,4 +36,15 @@ The core module, CLI, demo, benchmark and tests use only the Python standard
 library. Flask is needed only for `app.py`.
 
 User records are saved in `users.db` (created automatically on first run).
-# cns
+
+## Deploying the web interface (Render)
+
+1. Push this folder to GitHub.
+2. On render.com choose **New > Web Service** and connect the repository.
+3. Language: Python 3. Build command: `pip install -r requirements.txt`.
+   Start command: `gunicorn app:app`. Instance type: Free.
+4. Add an environment variable `SECRET_KEY` with a long random value.
+
+On the free plan the SQLite file is not kept: registered accounts are erased
+whenever the service restarts or redeploys. The hosted site is a demonstration
+only, so do not register with a real password.
